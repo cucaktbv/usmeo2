@@ -39,10 +39,11 @@ PRO_MODEL_ID = "gemini-pro-latest"
 
 # --- BIẾN NỘI BỘ & PROMPTS (Dành riêng cho thị trường Mỹ) ---
 PERSONA_DICT = {
-    "The Hype Reviewer (Chiến thần Năng lượng)": "Năng lượng cực cao, nhịp độ nhanh kiểu MrBeast hoặc MKBHD. Thường xuyên dùng các từ ngữ mạnh như 'game-changer', 'insane', 'mind-blowing'. Tập trung vào việc tạo sự phấn khích tột độ cho người xem để chốt sale nhanh.",
-    "The Deal Hunter (Thánh săn sale)": "Cực kỳ thực tế, tính toán chi li. Trọng tâm là 'Bang for your buck' (Đáng đồng tiền bát gạo). Ghét bị 'rip-off' (lừa đảo/giá ảo). Giọng điệu thân thiện, giống một người bạn am hiểu đang khuyên cách tiết kiệm tiền.",
+    "Friendly & Expert (Chuyên gia Thân thiện - KHUYÊN DÙNG)": "Giọng điệu thân thiện, giống một người bạn am hiểu đang tư vấn chân thành. Biến các thông số phức tạp thành ngôn ngữ đơn giản, dễ hiểu. Thường dùng các cụm từ như 'Honestly', 'Here's the deal', 'Real talk'. Tạo độ tin tưởng (trust) cực kỳ cao.",
+    "The Deal Hunter (Thánh săn sale)": "Cực kỳ thực tế, tính toán chi li. Trọng tâm là 'Bang for your buck' (Đáng đồng tiền bát gạo). Ghét bị 'rip-off' (lừa đảo/giá ảo). Giọng điệu giống một người bạn đang khuyên cách tiết kiệm tiền hiệu quả nhất.",
+    "The Brutally Honest Skeptic (Chuyên gia Bắt bẻ)": "Cực kỳ khó tính, chuyên soi các lỗi nhỏ (tiếng ồn, build quality, bloatware). Luôn tìm kiếm các 'dealbreaker' (điểm trừ chí mạng). Độ trust cực cao vì khi nhân vật này khen 'worth it', khán giả sẽ mua ngay.",
     "The Tech/Aesthetic Snob (Chuyên gia Cao cấp)": "Giọng điệu điềm tĩnh, chuyên nghiệp. Rất quan tâm đến 'sleek design' (thiết kế tinh tế) và hệ sinh thái. Sẽ chê bai không thương tiếc những sản phẩm có vẻ ngoài rẻ tiền (cheap plastic feel).",
-    "The Brutally Honest Skeptic (Chuyên gia Bắt bẻ)": "Cực kỳ khó tính, chuyên soi các lỗi nhỏ (tiếng ồn, build quality, bloatware). Luôn tìm kiếm các 'dealbreaker' (điểm trừ chí mạng). Độ trust cực cao vì khi nhân vật này khen 'worth it', khán giả sẽ mua ngay."
+    "The Hype Reviewer (Chiến thần Năng lượng)": "Năng lượng cực cao, nhịp độ nhanh. Thường xuyên dùng các từ ngữ mạnh như 'game-changer', 'insane', 'mind-blowing'. Chỉ nên dùng khi sản phẩm thực sự đột phá để tránh cảm giác bán hàng ép buộc (over-promising)."
 }
 
 MEME_VAULT = [
@@ -73,27 +74,29 @@ Thông tin dự án:
 - Hiện tại là năm 2026.
 
 YÊU CẦU LỌC TỪ KHÓA:
-1. Gộp, lọc trùng, chuyển Volume về số nguyên. CHỈ GIỮ LẠI TỪ KHÓA TIẾNG ANH. Tuyệt đối không để lọt ngôn ngữ khác (Không tiếng Ý, Không tiếng Việt). Độ dài: Loại bỏ từ khóa quá dài (trên 7 từ).
-2. Lọc Ý định Người dùng (Affiliate Intent - QUAN TRỌNG):
+1. Gộp, lọc trùng, chuyển Volume về số nguyên. CHỈ GIỮ LẠI TỪ KHÓA TIẾNG ANH. Loại bỏ các ngôn ngữ lạ, từ khóa vô nghĩa, hoặc từ khóa quá dài (trên 7 từ).
+2. Lọc Ý định Người dùng (Affiliate Intent - QUAN TRỌNG NHẤT):
+Hãy phân tích ngữ nghĩa của từ khóa theo tiếng Anh để lọc bỏ các nhóm sau:
 - LOẠI BỎ Ý định Nấu ăn/Sử dụng (Recipe/Usage Intent): Ví dụ: "how to use", "recipe for", "tutorial", "instructions".
-- LOẠI BỎ Ý định Sửa chữa/Kỹ thuật (Repair/Technical Intent): Ví dụ: "not working", "how to fix", "replacement parts".
-- ƯU TIÊN TỐI ĐA Ý định Mua hàng (Commercial Intent): "best", "review", "vs", "worth it", "budget", "under 100", "buying guide".
+- LOẠI BỎ Ý định Sửa chữa/Kỹ thuật (Repair/Technical Intent): Ví dụ: "not working", "how to fix", "replacement parts", "doesn't work".
+- LOẠI BỎ Ý định Giải trí/Thông tin chung: Ví dụ: "history of", "who invented".
+- ƯU TIÊN TỐI ĐA Ý định Mua hàng (Commercial Intent): Chứa các từ như "best", "review", "vs", "worth it", "budget", "under 100", "buying guide", "for".
 3. Bộ lọc Ý định "Chốt Sale & Bắt Trend" kiểu Mỹ: Giữ lại từ khóa vấn đề: "battery life", "noise level", "durability".
 4. Bộ lọc Thương hiệu: Giữ lại từ khóa kết hợp [Brand] + [Product]. CHỈ LOẠI BỎ: Từ khóa tìm đồ cũ (used, craigslist) hoặc sàn đối thủ (walmart, target, ebay).
 
 Dữ liệu đầu vào:
 {csv_data}
 
-YÊU CẦU ĐẦU RA (TRẢ VỀ JSON CHÍNH XÁC):
+YÊU CẦU ĐẦU RA (TRẢ VỀ JSON CHÍNH XÁC, GIỮ ĐÚNG FORMAT NÀY):
 {
     "detected_brands": ["brand1", "brand2"],
-    "keywords": [ {"keyword": "english keyword here", "volume": 1000} ]
+    "keywords": [ {"keyword": "english keyword here", "volume": 10000} ]
 }"""
 
 P2_TEMPLATE = """Phân tích chéo dữ liệu Amazon Mỹ (Amazon.com) và từ khóa để chọn Top 15 sản phẩm tốt nhất.
 Tiêu chí:
 1. Đa dạng phổ giá (Budget, Mid-range, Premium).
-2. Ưu tiên có Rating > 4.2 và số lượng review cực cao (thị trường Mỹ rất quan trọng social proof).
+2. Ưu tiên có Prime hoặc Rating > 4.2 và số lượng review cực cao (thị trường Mỹ rất quan trọng social proof).
 3. THƯƠNG HIỆU RÕ RÀNG: LOẠI BỎ NGAY LẬP TỨC các sản phẩm có tên thương hiệu rác, ký tự vô nghĩa gõ bừa từ bàn phím. CHỈ CHỌN thương hiệu uy tín hoặc tên đọc được dễ dàng bằng tiếng Anh.
 4. Tối ưu SEO: Khớp với từ khóa tiếng Anh có Volume cao.
 
@@ -110,21 +113,21 @@ YÊU CẦU ĐẦU RA (JSON):
             "price": "...", 
             "rating": "...", 
             "reason": "Lý do chọn bằng tiếng Việt",
-            "relevant_keywords": ["english keyword 1", "english keyword 2"]
+            "relevant_keywords": ["english keyword 1", "english keyword 2"] // BẮT BUỘC trích xuất chính xác 2-4 từ khóa từ danh sách cung cấp. Tuyệt đối không tự bịa.
         }
     ]
 }"""
 
-P3_TEMPLATE = """Đóng vai Giám khảo chuyên môn. Đọc chi tiết features, giá và review của 15 sản phẩm Amazon Mỹ để chọn ra ĐÚNG 5 SẢN PHẨM XUẤT SẮC NHẤT.
+P3_TEMPLATE = """Đóng vai Giám khảo chuyên môn. Đọc chi tiết features, giá và review của 15 sản phẩm Amazon Mỹ để chọn ra ĐÚNG 5 SẢN PHẨM XUẤT SẮC NHẤT đưa vào video review.
 
 TIÊU CHÍ LỰA CHỌN BẮT BUỘC (QUAN TRỌNG ĐỂ KHỚP TAG):
-1. Phân bổ thứ hạng BẮT BUỘC: 
+1. Phân bổ thứ hạng BẮT BUỘC (Đội hình đa dạng phân khúc): 
    - Vị trí Top 1: [Best Overall] (Sản phẩm toàn diện nhất, rating cao nhất).
    - Vị trí Top 2: [Premium Pick] (Sản phẩm cao cấp, đắt tiền, nhiều tính năng nhất).
    - Vị trí Top 3: [Best Value / Bang for the buck] (Cân bằng giá và hiệu năng tốt nhất).
-   - Vị trí Top 4: [Solid Alternative] (Sự lựa chọn thay thế an toàn).
+   - Vị trí Top 4: [Solid Alternative] (Sự lựa chọn thay thế an toàn có điểm nhấn riêng).
    - Vị trí Top 5: [Best Budget] (Sản phẩm rẻ nhất nhưng vẫn dùng tốt).
-2. Người Mỹ cực kỳ ghét việc bị lừa dối (rip-off). Dựa vào Review Summary, LOẠI BỎ ngay các sản phẩm bị chê tơi tả về việc "ngừng hoạt động sau vài tháng" hoặc "Customer service tồi tệ".
+2. LƯU Ý LOẠI TRỪ KHẮT KHE: Người Mỹ cực kỳ ghét việc bị lừa dối (rip-off). Dựa vào Review Summary, thẳng tay LOẠI BỎ ngay các sản phẩm bị chê tơi tả về việc "ngừng hoạt động sau vài tháng", "Customer service tồi tệ", hoặc lỗi vặt liên tục.
 3. ĐA DẠNG THƯƠNG HIỆU: Không để 1 thương hiệu chiếm quá 2 vị trí.
 
 [LUẬT ÉP BUỘC JSON]: 1. Tuyệt đối KHÔNG sử dụng dấu ngoặc kép (") bên trong các đoạn text giải thích (trường 'reasoning'). Nếu cần nhấn mạnh, chỉ dùng dấu nháy đơn ('). 2. TUYỆT ĐỐI KHÔNG XUỐNG DÒNG (Enter) bên trong nội dung của biến 'reasoning'. Toàn bộ giá trị phải nằm trên một dòng duy nhất.
@@ -138,23 +141,22 @@ TRẢ VỀ JSON CHÍNH XÁC THEO CẤU TRÚC:
     "top_3_best_value": "Mã_ASIN_3",
     "top_2_premium_pick": "Mã_ASIN_2",
     "top_1_best_overall": "Mã_ASIN_1",
-    "reasoning": "Giải thích tóm tắt bằng tiếng Việt..."
+    "reasoning": "Giải thích tóm tắt bằng tiếng Việt lý do phân bổ..."
 }"""
 
 P4_TEMPLATE = """# YouTube Script Generation Prompt - USA MARKET
 
-Generate a highly engaging, fast-paced, SEO-optimized YouTube script (6-8 minutes) for a TOP X product ranking video on Amazon US.
+Bạn là một chuyên gia review sản phẩm và tối ưu hóa AEO (AI Search Optimization). Generate a highly engaging, fast-paced, SEO-optimized YouTube script (6-8 minutes) for a TOP 5 product ranking video on Amazon US.
 
 ## CRITICAL RULES
 - **ABSOLUTELY NO ITALIAN, VIETNAMESE, OR JAPANESE WORDS IN THE SCRIPT OUTPUT.** The output MUST be 100% in American English (except for section tags like <intro>, title:, description: which remain as is).
 - **Target Audience:** American consumers (fast attention span, value ROI).
-- **TTS Optimization:** The script must be perfectly written for Text-To-Speech (TTS) engines. Spell out symbols naturally (e.g., write "dollars" instead of "$", write "percent" instead of "%"). Avoid weird special characters that confuse TTS.
+- **TTS Optimization (LUẬT PHÁT ÂM TTS):** The script must be perfectly written for Text-To-Speech (TTS) engines. Spell out symbols naturally (e.g., write "dollars" instead of "$", write "percent" instead of "%"). Use contractions (e.g., "don't", "it's"). Avoid weird special characters.
 
 ## INPUT
-- **Channel Name**: {channel_branding}
+- **Channel Name (Branding)**: {channel_branding}
 - **Host Pronoun/Name**: {host_name}
 - **Product Category**: {seed_keywords}
-- **Product Count**: 5 products
 - **Language**: US English (Conversational, dynamic, passionate).
 - **Persona**: {selected_persona} (Traits: {persona_traits})
 {meme_instruction}
@@ -163,25 +165,16 @@ Generate a highly engaging, fast-paced, SEO-optimized YouTube script (6-8 minute
 - **Product Data**: {final_5_data}
 - **Context**: Year 2026.
 
-## 🎭 TTS EMOTION TAGS (MANDATORY FOR AUTOMATION PIPELINE)
-Insert exact emotion tags in brackets to control the TTS tone naturally:
-- `[laugh]` (ironic laugh / finding something funny or surprisingly good)
-- `[sigh]` (disappointment over a bad feature or high price)
-- `[gasp]` (shock at a great price or amazing spec)
-- `[excited]` (pumping up the energy for the #1 spot or a crazy feature)
-- `[pause]` (to build suspense before revealing a price or product name)
-*Rule: Use 1-2 tags max per product section. Place them naturally within sentences.*
+## 🎯 SEO, BRANDING & METADATA RULES (CRITICAL)
+Bạn phải phân lập rõ ràng 2 quy tắc xử lý từ khóa cho 2 khu vực khác nhau:
 
----
-## 🎯 SEO & METADATA RULES (CRITICAL)
-[SECTION 1: METADATA - Title, Description, Tags]
-- BẮT BUỘC giữ nguyên bản 100% cấu trúc từ khóa SEO (Exact Match) trong phần tags.
+[KHU VỰC 1: METADATA - Tiêu đề, Mô tả, Tags]
+- BẮT BUỘC giữ nguyên bản 100% cấu trúc từ khóa SEO (Exact Match) trong phần tags. Không tự ý thêm bớt mạo từ.
 
-[SECTION 2: SCRIPT - Dialogue from <intro> to <outro>]
-- BRANDING: Bắt buộc xưng hô là "{host_name}" và giới thiệu tên kênh là "{channel_branding}" ở phần Intro hoặc Outro một cách tự nhiên.
-- Dòng chảy đếm ngược: Đảm bảo đi từ số 5 ngược về số 1. Không bao giờ đảo ngược thứ tự.
+[KHU VỰC 2: SCRIPT - Lời thoại từ <intro> đến <outro>]
+- BRANDING (QUAN TRỌNG): Bắt buộc xưng hô là "{host_name}" và giới thiệu tên kênh là "{channel_branding}" ở phần Intro HOẶC Outro một cách cực kỳ tự nhiên.
+- TỪ KHÓA: Lồng ghép từ khóa vào câu thoại dưới dạng từ đồng nghĩa hoặc thêm mạo từ (a, an, the) để câu văn trôi chảy. Tuyệt đối KHÔNG dùng dấu ngoặc kép (" ") cho cụm từ khóa trong lời thoại.
 
----
 ## ⏱️ STRICT WORD LIMITS (NON-NEGOTIABLE)
 | Section | Target Words | HARD MAX |
 |---------|--------------|----------|
@@ -189,6 +182,25 @@ Insert exact emotion tags in brackets to control the TTS tone naturally:
 | Buying Guide | 155-195 | 220 |
 | Products (x5) | ~260 per product | 290 per product |
 | Conclusion | 65-90 | 105 |
+
+---
+## VIDEO STRUCTURE & LOGIC
+
+### 1. HOOK & INTRO (Tag: <intro>)
+- **Hook:** EXTEND curiosity from title. NEVER say "Hey guys, welcome back" first.
+- **Retention Bait:** BẮT BUỘC chèn một câu mồi nhử để giữ chân người xem đi qua phần Buying Guide. (e.g., "Number one offers insane value, but before the ranking, here are 3 traps that will waste your money...").
+
+### 2. BUYING GUIDE (Tag: <buying_guide>)
+- Provide 3 Essential Tips dưới dạng "Tránh những cạm bẫy" (The Classic Trap, Spec Sheet Lie) để đánh vào tâm lý người Mỹ.
+- **The Bridge:** Ở tip số 3, BẮT BUỘC BẮC CẦU sang Top 5. (e.g., "Third: [Tiêu chí]. Don't worry, every product on my Top 5 passes this test perfectly. Alright, enough talking, let's kick things off with number 5.")
+
+### 3. PRODUCT REVIEWS (<top5> to <top1>)
+- **The 'Best For' Label:** Bắt đầu review mỗi sản phẩm bằng một định vị rõ ràng (Ví dụ: "Kicking things off at number 5, the [Product] is the absolute best choice if you..."). KHÔNG lặp lại một cấu trúc mở đầu cho cả 5 sản phẩm.
+- **SPEC-STORY FUSION:** Weave specs WITH real user experiences (e.g., "5000 mAh battery... one guy took this on a 3-day hike"). 
+- **Limitation + Solution:** Be DIRECT. Name a minor flaw, quantify it, give workaround.
+
+### 4. 🎭 TTS EMOTION TAGS
+Insert exact emotion tags in brackets to control the TTS tone naturally: `[laugh]`, `[sigh]`, `[gasp]`, `[excited]`, `[pause]`. (Use 1-2 tags max per product section).
 
 ---
 ## OUTPUT FORMAT (MANDATORY EXACT STRUCTURE)
@@ -232,11 +244,10 @@ script:
 [English content - MUST MENTION CHANNEL NAME "{channel_branding}"]
 
 <buying_guide>
-[English content]
-"Before we dive in, just a quick reminder that all the links to check the most up-to-date prices are down in the description below. They are affiliate links... Alright, enough talking, let's kick things off with number 5."
+[English content - MUST include The Bridge transition]
 
 <top5>
-[English content - Use emotion tags like [pause], [excited]]
+[English content - Use emotion tags]
 
 <top4>
 [English content - Use emotion tags]
