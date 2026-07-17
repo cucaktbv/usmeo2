@@ -436,7 +436,7 @@ with st.sidebar:
     
     st.divider()
     st.subheader("Cấu hình Thương Hiệu (Branding)")
-    channel_branding = st.text_input("Tên Kênh YouTube:", value="Smart Consumer")
+    channel_branding = st.text_input("Tên Kênh YouTube:", value="Tech Selected")
     host_name = st.text_input("Cách xưng hô (VD: I, we, tên host):", value="I")
 
 tab1, tab2 = st.tabs(["📌 BƯỚC 1: Lọc 15 Sản Phẩm US", "✍️ BƯỚC 2: OCR & Viết Kịch Bản US"])
